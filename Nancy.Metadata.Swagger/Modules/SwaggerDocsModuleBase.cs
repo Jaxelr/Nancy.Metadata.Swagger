@@ -4,6 +4,7 @@ using Nancy.Metadata.Swagger.Model;
 using Nancy.Routing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
+using System.Text.RegularExpressions;
 
 namespace Nancy.Metadata.Swagger.Modules
 {
@@ -18,12 +19,12 @@ namespace Nancy.Metadata.Swagger.Modules
         private readonly string apiBaseUrl;
         private readonly string[] schemes;
 
-        protected SwaggerDocsModuleBase(IRouteCacheProvider routeCacheProvider, 
-            string docsLocation = "/api/docs", 
+        protected SwaggerDocsModuleBase(IRouteCacheProvider routeCacheProvider,
+            string docsLocation = "/api/docs",
             string title = "API documentation",
-            string apiVersion = "1.0", 
+            string apiVersion = "1.0",
             string host = "localhost:5000",
-            string apiBaseUrl = "/", 
+            string apiBaseUrl = "/",
             params string[] schemes)
             : base(docsLocation)
         {
@@ -74,11 +75,14 @@ namespace Nancy.Metadata.Swagger.Modules
                 }
 
                 string path = m.Path;
-                
+
                 if (!string.IsNullOrEmpty(swaggerSpecification.BasePath) && swaggerSpecification.BasePath != "/")
                 {
                     path = path.Replace(swaggerSpecification.BasePath, "");
                 }
+
+                //Swagger doesnt handle these special characters on the url path construction, but Nancy allows it, therefore lets exclude them.
+                path = Regex.Replace(path, "[?:.*]", string.Empty);
 
                 if (!endpoints.ContainsKey(path))
                 {
