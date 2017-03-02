@@ -18,18 +18,20 @@ Now you can add metadata module and describe your methods:
 
 Example module:
 
-	public class RootModule : NancyModule
-    {
-        public RootModule() : base("/api")
-        {
-            Get["SimpleRequestWithParameter", "/hello/{name}"] = r => Hello(r.name);
-        }
-    }
-
+```c#
+public class RootModule : NancyModule
+{
+	public RootModule() : base("/api")
+	{
+	    Get["SimpleRequestWithParameter", "/hello/{name}"] = r => Hello(r.name);
+	}
+}
+```
 Example metadata module (for ``%modulename%Module`` it should be named ``%modulename%MetadataModule``):
 **IMPORTANT: Metadata module file should be placed in the same folder (namespace) with module**
 
-	public class RootMetadataModule : MetadataModule<SwaggerRouteMetadata>
+```c#
+     public class RootMetadataModule : MetadataModule<SwaggerRouteMetadata>
     {
         public RootMetadataModule()
         {
@@ -38,12 +40,14 @@ Example metadata module (for ``%modulename%Module`` it should be named ``%module
                             .WithRequestParameter("name"));
         }
     }
+```
 
 ## Adding docs module
 
 You also need to create one additional module that will return you json documentation. Here is the sample:
 
-	public class DocsModule : SwaggerDocsModuleBase
+```c#
+    public class DocsModule : SwaggerDocsModuleBase
     {
         public DocsModule(IRouteCacheProvider routeCacheProvider) 
         	: base(routeCacheProvider, 
@@ -56,6 +60,7 @@ You also need to create one additional module that will return you json document
         {
         }
     }
+```
 
 ## Adding swagger UI:
 
@@ -66,7 +71,9 @@ In index.html file you can set default url where ui should get json documentatio
 
 Json.NET schema is limited with 10 schema generations per hour, so if you have more objects you need to configure license for it by:
 
-	Nancy.Metadata.Swagger.Core.LicenseInstsaller.SetJsonSchemaLicense(Settings.Default.JsonSchemaLicenseKey);
+```c#
+Nancy.Metadata.Swagger.Core.LicenseInstsaller.SetJsonSchemaLicense(Settings.Default.JsonSchemaLicenseKey);
+```
 
 It should be added before Nancy configuration.
 
