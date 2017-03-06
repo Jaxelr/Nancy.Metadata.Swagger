@@ -26,7 +26,6 @@ namespace Nancy.Metadata.Swagger.Modules
             string host = "localhost:5000",
             string apiBaseUrl = "/",
             params string[] schemes)
-            : base(docsLocation)
         {
             this.routeCacheProvider = routeCacheProvider;
             this.title = title;
@@ -35,7 +34,7 @@ namespace Nancy.Metadata.Swagger.Modules
             this.apiBaseUrl = apiBaseUrl;
             this.schemes = schemes;
 
-            Get["/"] = r => GetDocumentation();
+            Get[docsLocation] = r => GetDocumentation();
         }
 
         public virtual Response GetDocumentation()
