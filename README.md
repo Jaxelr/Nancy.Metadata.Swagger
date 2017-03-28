@@ -67,16 +67,6 @@ You also need to create one additional module that will return you json document
 Now you are able to add swagger UI (you can download it from http://swagger.io/swagger-ui/) and point it to your docs module.
 In index.html file you can set default url where ui should get json documentation file.
 
-## Configuring Json.NET schema license
-
-Json.NET schema is limited with 10 schema generations per hour, so if you have more objects you need to configure license for it by:
-
-```c#
-Nancy.Metadata.Swagger.Core.LicenseInstsaller.SetJsonSchemaLicense(Settings.Default.JsonSchemaLicenseKey);
-```
-
-It should be added before Nancy configuration.
-
 # Additional information
 
 Feel free to fork this library, create issues, pull requests and send me any feedback to a.kudryavcev@gmail.com
