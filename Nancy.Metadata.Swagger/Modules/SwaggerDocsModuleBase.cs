@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using Nancy.Metadata.Swagger.Core;
+﻿using Nancy.Metadata.Swagger.Core;
 using Nancy.Metadata.Swagger.Model;
 using Nancy.Routing;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Nancy.Metadata.Swagger.Modules
@@ -80,7 +79,7 @@ namespace Nancy.Metadata.Swagger.Modules
                     path = path.Replace(swaggerSpecification.BasePath, "");
                 }
 
-                //Swagger doesnt handle these special characters on the url path construction, but Nancy allows it, therefore lets exclude them.
+                //Swagger doesnt handle these special characters on the url path construction, but Nancy allows it.
                 path = Regex.Replace(path, "[?:.*]", string.Empty);
 
                 if (!endpoints.ContainsKey(path))
@@ -93,7 +92,7 @@ namespace Nancy.Metadata.Swagger.Modules
                 // add definitions
                 if (swaggerSpecification.ModelDefinitions == null)
                 {
-                    swaggerSpecification.ModelDefinitions = new Dictionary<string, JSchema>();
+                    swaggerSpecification.ModelDefinitions = new Dictionary<string, NJsonSchema.JsonSchema4>();
                 }
 
                 foreach (string key in SchemaCache.Cache.Keys)

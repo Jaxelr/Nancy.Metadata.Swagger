@@ -1,10 +1,7 @@
 ﻿using Nancy.Metadata.Swagger.Core;
 using Nancy.Metadata.Swagger.Model;
-using Newtonsoft.Json.Schema;
-using Newtonsoft.Json.Schema.Generation;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Nancy.Metadata.Swagger.Fluent
 {
@@ -138,28 +135,21 @@ namespace Nancy.Metadata.Swagger.Fluent
 
         private static string GetOrSaveSchemaReference(Type type)
         {
-            string key = type.Name;
+            string key = type.FullName;
 
             if (SchemaCache.Cache.ContainsKey(key))
             {
                 return key;
             }
 
-            JSchemaGenerator generator = new JSchemaGenerator
+            var schema = NJsonSchema.JsonSchema4.FromType(type, new NJsonSchema.Generation.JsonSchemaGeneratorSettings
             {
-                SchemaIdGenerationHandling = SchemaIdGenerationHandling.None,
-                SchemaReferenceHandling = SchemaReferenceHandling.None
-            };
+                NullHandling = NJsonSchema.NullHandling.Swagger,
+                TypeNameGenerator = new TypeNameGenerator(),
+                SchemaNameGenerator = new TypeNameGenerator()
+            });
 
-            JSchema schema = generator.Generate(type);
-
-            // I didn't find the way how to disallow JSchemaGenerator to use nullable types, swagger doesn't work with them
-
-            string tmp = schema.ToString();
-            string s = @"\""type\"":[\s\n\r]*\[[\s\n\r]*\""(\w+)\"",[\s\n\r]*\""null\""[\s\n\r]*\]";
-            tmp = Regex.Replace(tmp, s, "\"type\": \"$1\"");
-
-            SchemaCache.Cache[key] = JSchema.Parse(tmp);
+            SchemaCache.Cache[key] = schema;
 
             return key;
         }
