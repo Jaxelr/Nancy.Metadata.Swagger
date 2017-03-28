@@ -5,7 +5,7 @@ namespace Nancy.Metadata.Swagger.DemoApplication
 {
     public class Program
     {
-        static void Main()
+        private static void Main()
         {
             string url = "http://localhost:5000";
 
