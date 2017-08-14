@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Nancy.Metadata.Swagger</id>
+    <id>Nancy.Metadata.Swagger.2.0</id>
     <version>1.0.2</version>
     <authors>Jaxel Rojas</authors>
     <owners>Jaxel Rojas</owners>
