@@ -1,15 +1,22 @@
-﻿using System;
+﻿using NJsonSchema;
+using System;
+using System.Collections.Generic;
 
 namespace Nancy.Metadata.Swagger.Core
 {
-    public class TypeNameGenerator : NJsonSchema.ITypeNameGenerator, NJsonSchema.ISchemaNameGenerator
+    public class TypeNameGenerator : ITypeNameGenerator, ISchemaNameGenerator
     {
         public string Generate(Type type)
         {
             return type.FullName;
         }
 
-        public string Generate(NJsonSchema.JsonSchema4 schema, string typeNameHint)
+        public string Generate(JsonSchema4 schema, string typeNameHint)
+        {
+            return typeNameHint;
+        }
+
+        public string Generate(JsonSchema4 schema, string typeNameHint, ICollection<string> reservedTypeNames)
         {
             return typeNameHint;
         }
