@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Metadata.Swagger", "Nancy.Metadata.Swagger\Nancy.Metadata.Swagger.csproj", "{3307A948-A2D7-4260-A644-720364E2136D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nancy.Metadata.Swagger.DemoApplication", "Nancy.Metadata.Swagger.DemoApplication\Nancy.Metadata.Swagger.DemoApplication.csproj", "{A537003B-2A76-4A0D-8F08-7D66EC17E2F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{92E508B5-8B2A-4AAE-BE11-92B886DD239E}"
+	ProjectSection(SolutionItems) = preProject
+		Nancy.Metadata.Swagger.nuspec = Nancy.Metadata.Swagger.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F4C8F24-9AFF-4960-BA9A-AC9F1C52B02F}
 	EndGlobalSection
 EndGlobal

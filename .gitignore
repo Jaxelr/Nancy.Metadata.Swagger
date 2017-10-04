@@ -24,3 +24,4 @@ bld/
 
 # build results
 .build/
+.vs/
