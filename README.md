@@ -11,7 +11,7 @@ Also it uses some of Nancy stuff, so it should be installed to.
 
 First you need to install Nancy.Metadata.Swagger and Nancy.Metadata.Modules nuget packages by:
 
-	PM> Install-Package Nancy.Metadata.Swagger -Pre
+	PM> Install-Package Nancy.Metadata.Swagger
 	PM> Install-Package Nancy.Metadata.Modules
 
 Now you can add metadata module and describe your methods:
