@@ -66,20 +66,3 @@ You also need to create one additional module that will return you json document
 
 Now you are able to add swagger UI (you can download it from http://swagger.io/swagger-ui/) and point it to your docs module.
 In index.html file you can set default url where ui should get json documentation file.
-
-# Additional information
-
-Feel free to fork this library, create issues, pull requests and send me any feedback to a.kudryavcev@gmail.com
-
-## Things to be done
-
-There are lots of things that I want to implement here, but due to lack of time it's almost impossible. 
-However, it would be nice to have:
-
-1. Use free alternative for Json.NET schema or create our own
-1. Use AOP way, so you'll be able to use attributes to describe your methods
-1. Write code documentation
-1. Add swagger UI to the package
-1. Make it more simplier
-
-If you have any ideas, please feel free to contact me
