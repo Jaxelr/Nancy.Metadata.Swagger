@@ -25,7 +25,7 @@ namespace Nancy.Metadata.Swagger.DemoApplication.Modules
 
             SimpleResponseModel response = new SimpleResponseModel
             {
-                Hello = string.Format("Hello, {0}. We got your name from nested obejct", model.SimpleModel.Name)
+                Hello = $"Hello, {model.SimpleModel.Name}. We got your name from nested object"
             };
 
             return Response.AsJson(response);
@@ -37,7 +37,7 @@ namespace Nancy.Metadata.Swagger.DemoApplication.Modules
 
             SimpleResponseModel response = new SimpleResponseModel
             {
-                Hello = string.Format("Hello, {0}", model.Name)
+                Hello = $"Hello, {model.Name}"
             };
 
             return Response.AsJson(response);
@@ -57,7 +57,7 @@ namespace Nancy.Metadata.Swagger.DemoApplication.Modules
         {
             SimpleResponseModel response = new SimpleResponseModel
             {
-                Hello = string.Format("Hello, {0}", name)
+                Hello = $"Hello, {name}"
             };
 
             return Response.AsJson(response);
