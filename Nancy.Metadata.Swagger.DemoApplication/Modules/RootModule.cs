@@ -12,10 +12,8 @@ namespace Nancy.Metadata.Swagger.DemoApplication.Modules
         {
             Get["SimpleRequest", "/hello"] = r => HelloWorld();
             Get["SimpleRequestWithParameter", "/hello/{name}"] = r => Hello(r.name);
-
             Post["SimplePostRequst", "/hello"] = r => HelloPost();
             Post["PostRequestWithModel", "/hello/model"] = r => HelloModel();
-
             Post["PostRequestWithNestedModel", "/hello/nestedmodel"] = r => HelloNestedModel();
         }
 
