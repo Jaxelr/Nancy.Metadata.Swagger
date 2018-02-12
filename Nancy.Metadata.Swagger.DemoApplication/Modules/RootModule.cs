@@ -12,7 +12,7 @@ namespace Nancy.Metadata.Swagger.DemoApplication.Modules
         {
             Get["SimpleRequest", "/hello"] = r => HelloWorld();
             Get["SimpleRequestWithParameter", "/hello/{name}"] = r => Hello(r.name);
-            Post["SimplePostRequst", "/hello"] = r => HelloPost();
+            Post["SimplePostRequest", "/hello"] = r => HelloPost();
             Post["PostRequestWithModel", "/hello/model"] = r => HelloModel();
             Post["PostRequestWithNestedModel", "/hello/nestedmodel"] = r => HelloNestedModel();
         }
@@ -85,7 +85,7 @@ namespace Nancy.Metadata.Swagger.DemoApplication.Modules
                             .WithRequestParameter("name")
                             .WithSummary("Simple GET with parameters"));
 
-            Describe["SimplePostRequst"] = desc => new SwaggerRouteMetadata(desc)
+            Describe["SimplePostRequest"] = desc => new SwaggerRouteMetadata(desc)
                 .With(info => info.WithResponseModel("200", typeof(SimpleResponseModel), "Sample response")
                     .WithSummary("Simple POST example"));
 
