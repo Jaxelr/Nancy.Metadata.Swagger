@@ -144,7 +144,7 @@ namespace Nancy.Metadata.Swagger.Fluent
 
             var schema = NJsonSchema.JsonSchema4.FromTypeAsync(type, new NJsonSchema.Generation.JsonSchemaGeneratorSettings
             {
-                NullHandling = NJsonSchema.NullHandling.Swagger,
+                DefaultReferenceTypeNullHandling = NJsonSchema.ReferenceTypeNullHandling.NotNull,
                 TypeNameGenerator = new TypeNameGenerator(),
                 SchemaNameGenerator = new TypeNameGenerator()
             });

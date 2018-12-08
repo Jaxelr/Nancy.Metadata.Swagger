@@ -20,5 +20,10 @@ namespace Nancy.Metadata.Swagger.Core
         {
             return typeNameHint;
         }
+
+        public string Generate(JsonSchema4 schema, string typeNameHint, IEnumerable<string> reservedTypeNames)
+        {
+            return typeNameHint;
+        }
     }
 }
